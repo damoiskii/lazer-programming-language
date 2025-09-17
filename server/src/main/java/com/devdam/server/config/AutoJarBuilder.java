@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import com.devdam.server.util.BaseUtils;
 import com.devdam.server.util.JarUtils;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,7 @@ public class AutoJarBuilder implements CommandLineRunner {
                 String mvnwPath = currentDirectory.resolve("mvnw").toString();
 
                 // Command to run Maven package
-                String command = "cmd.exe /C " + mvnwPath + " clean package -DskipTests";
+                String command = (BaseUtils.isWindowsOS() ? "cmd.exe /C " : "sh -c ") + mvnwPath + " clean package -DskipTests";
 
                 // Execute command from the project directory
                 ProcessBuilder builder = new ProcessBuilder(command.split(" "));

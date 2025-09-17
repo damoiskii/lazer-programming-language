@@ -9,6 +9,6 @@ import lombok.Data;
 public class NovitaProperties {
     private String url;
     private String model;
-    private int maxToken;
+    private int maxTokens;
     private String apiKey;
 }
