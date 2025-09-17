@@ -74,6 +74,7 @@ server/.idea/
 server/.vscode/
 server/.classpath
 server/.project
+server/.mvn/
 
 
 # Client
