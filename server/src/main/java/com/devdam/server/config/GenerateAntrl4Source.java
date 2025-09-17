@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.devdam.server.util.BaseUtils;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -75,9 +76,8 @@ public class GenerateAntrl4Source {
 
         // Create a process builder to run the command - OS agnostic
         ProcessBuilder processBuilder;
-        String osName = System.getProperty("os.name").toLowerCase();
         
-        if (osName.contains("win")) {
+        if (BaseUtils.isWindowsOS()) {
             // Windows
             processBuilder = new ProcessBuilder("cmd.exe", "/c", mavenCommand);
         } else {

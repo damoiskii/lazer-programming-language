@@ -12,4 +12,23 @@ public class BaseUtils {
         // In dev mode -> http://localhost:8080
         return BASE_URL;
     }
+
+    public static boolean isWindowsOS(){
+        String os = findOS();
+        return os.contains("win");
+    }
+
+    public static boolean isMacOS(){
+        String os = findOS();
+        return os.contains("mac");
+    }
+
+    public static boolean isLinuxOS(){
+        String os = findOS();
+        return os.contains("nix") || os.contains("nux") || os.contains("aix");
+    }
+
+    private static String findOS() {
+        return System.getProperty("os.name").toLowerCase();
+    }
 }
