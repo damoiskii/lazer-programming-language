@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### ANTLR4 GENERATED FROM VS CODE ###
+# src/main/antlr4/com/antlr/code/.antlr

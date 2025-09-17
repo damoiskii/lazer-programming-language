@@ -75,6 +75,7 @@ server/.vscode/
 server/.classpath
 server/.project
 server/.mvn/
+# server/src/main/antlr4/com/antlr/code/.antlr
 
 
 # Client
