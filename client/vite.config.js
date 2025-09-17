@@ -19,7 +19,7 @@ export default defineConfig({
     // },
     // cors: true,
     // proxy: {
-    //   '/api': 'http://localhost:8000',
+    //   '/api': 'http://localhost:8000/api/v1/',
     // },
 
   },
