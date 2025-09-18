@@ -163,6 +163,7 @@ public class VariableParser {
             }
         }
     }
+    
     private boolean isBound(char var, Stack<Set<Character>> boundStack) {
         for (Set<Character> boundSet : boundStack) {
             if (boundSet.contains(var)) {
