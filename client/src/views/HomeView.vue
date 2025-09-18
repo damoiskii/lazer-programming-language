@@ -6,6 +6,29 @@ import { RouterLink } from 'vue-router'
   <main class="home">
     <!-- Hero Section -->
     <section class="hero">
+      <!-- Floating Variables -->
+      <div class="floating-variables">
+        <div class="floating-var var-1">λx</div>
+        <div class="floating-var var-2">f</div>
+        <div class="floating-var var-3">α</div>
+        <div class="floating-var var-4">#x.x</div>
+        <div class="floating-var var-5">β</div>
+        <div class="floating-var var-6">y</div>
+        <div class="floating-var var-7">λf.λx</div>
+        <div class="floating-var var-8">γ</div>
+        <div class="floating-var var-9">z</div>
+        <div class="floating-var var-10">δ</div>
+        <div class="floating-var var-11">#f.#x.f</div>
+        <div class="floating-var var-12">ε</div>
+        <div class="floating-var var-13">m</div>
+        <div class="floating-var var-14">λy.y</div>
+        <div class="floating-var var-15">η</div>
+        <div class="floating-var var-16">n</div>
+        <div class="floating-var var-17">θ</div>
+        <div class="floating-var var-18">#s.#z</div>
+        <div class="floating-var var-19">ι</div>
+        <div class="floating-var var-20">κ</div>
+      </div>
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
@@ -105,6 +128,185 @@ import { RouterLink } from 'vue-router'
   min-height: 100vh;
 }
 
+/* Floating Variables Animation */
+.floating-variables {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-var {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.137);
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-weight: 600;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Individual variable styling */
+.var-1 {
+  left: 5%;
+  font-size: 1.8rem;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+
+.var-2 {
+  left: 15%;
+  font-size: 1.2rem;
+  animation-duration: 18s;
+  animation-delay: 2s;
+}
+
+.var-3 {
+  left: 25%;
+  font-size: 2.2rem;
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+
+.var-4 {
+  left: 35%;
+  font-size: 1.5rem;
+  animation-duration: 20s;
+  animation-delay: 1s;
+}
+
+.var-5 {
+  left: 45%;
+  font-size: 1.7rem;
+  animation-duration: 14s;
+  animation-delay: 6s;
+}
+
+.var-6 {
+  left: 55%;
+  font-size: 1.3rem;
+  animation-duration: 16s;
+  animation-delay: 3s;
+}
+
+.var-7 {
+  left: 65%;
+  font-size: 1.9rem;
+  animation-duration: 13s;
+  animation-delay: 5s;
+}
+
+.var-8 {
+  left: 75%;
+  font-size: 2.1rem;
+  animation-duration: 17s;
+  animation-delay: 7s;
+}
+
+.var-9 {
+  left: 85%;
+  font-size: 1.4rem;
+  animation-duration: 19s;
+  animation-delay: 2.5s;
+}
+
+.var-10 {
+  left: 95%;
+  font-size: 1.6rem;
+  animation-duration: 15s;
+  animation-delay: 8s;
+}
+
+.var-11 {
+  left: 10%;
+  font-size: 1.8rem;
+  animation-duration: 21s;
+  animation-delay: 9s;
+}
+
+.var-12 {
+  left: 20%;
+  font-size: 2.0rem;
+  animation-duration: 11s;
+  animation-delay: 4.5s;
+}
+
+.var-13 {
+  left: 30%;
+  font-size: 1.1rem;
+  animation-duration: 22s;
+  animation-delay: 10s;
+}
+
+.var-14 {
+  left: 40%;
+  font-size: 1.7rem;
+  animation-duration: 14s;
+  animation-delay: 6.5s;
+}
+
+.var-15 {
+  left: 50%;
+  font-size: 2.3rem;
+  animation-duration: 16s;
+  animation-delay: 12s;
+}
+
+.var-16 {
+  left: 60%;
+  font-size: 1.2rem;
+  animation-duration: 18s;
+  animation-delay: 8.5s;
+}
+
+.var-17 {
+  left: 70%;
+  font-size: 1.9rem;
+  animation-duration: 13s;
+  animation-delay: 11s;
+}
+
+.var-18 {
+  left: 80%;
+  font-size: 1.6rem;
+  animation-duration: 20s;
+  animation-delay: 7.5s;
+}
+
+.var-19 {
+  left: 90%;
+  font-size: 2.4rem;
+  animation-duration: 15s;
+  animation-delay: 13s;
+}
+
+.var-20 {
+  left: 3%;
+  font-size: 1.3rem;
+  animation-duration: 17s;
+  animation-delay: 14s;
+}
+
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -113,6 +315,7 @@ import { RouterLink } from 'vue-router'
   min-height: 80vh;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .hero-content {
@@ -122,6 +325,8 @@ import { RouterLink } from 'vue-router'
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .logo-text {
@@ -331,6 +536,7 @@ import { RouterLink } from 'vue-router'
   
   .logo-text {
     font-size: 2.5rem;
+    justify-content: center;
   }
   
   .hero-subtitle {
