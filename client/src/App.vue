@@ -32,8 +32,8 @@ import { RouterLink, RouterView } from 'vue-router'
         <div class="footer-section">
           <h4>Quick Links</h4>
           <RouterLink to="/" class="footer-link">Home</RouterLink>
-          <RouterLink to="/playground" class="footer-link">Playground</RouterLink>
           <RouterLink to="/about" class="footer-link">About</RouterLink>
+          <RouterLink to="/playground" class="footer-link">Playground</RouterLink>
         </div>
         <div class="footer-section">
           <h4>Features</h4>
