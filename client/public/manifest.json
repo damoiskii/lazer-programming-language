@@ -1,21 +1,45 @@
 {
   "name": "Lazer Programming Language",
   "short_name": "Lazer",
-  "description": "A modern functional programming language playground",
+  "description": "An interactive playground for learning and experimenting with lambda calculus and functional programming concepts",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#1f2937",
   "background_color": "#111827",
+  "orientation": "portrait-primary",
+  "categories": ["education", "developer", "programming"],
+  "lang": "en",
   "icons": [
-    {
-      "src": "/favicon.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
     {
       "src": "/favicon.ico",
       "sizes": "16x16 32x32",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/hero-img.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ]
 }
