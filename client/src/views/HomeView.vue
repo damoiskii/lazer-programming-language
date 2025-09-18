@@ -38,7 +38,8 @@ import { RouterLink } from 'vue-router'
             Elevate your impure lambda calculus coding experience
           </h2>
           <p class="hero-description">
-            Unlock deeper understanding and enhance productivity effortlessly with our innovative programming language built on mathematical foundations
+            Unlock deeper understanding and enhance productivity effortlessly with our innovative programming language
+            built on mathematical foundations
           </p>
           <div class="hero-actions">
             <RouterLink to="/playground" class="btn btn-primary">
@@ -57,13 +58,17 @@ import { RouterLink } from 'vue-router'
                 <span class="code-comment">// Identity function</span>
               </div>
               <div class="code-line">
-                <span class="code-keyword">#</span><span class="code-variable">x</span><span class="code-operator">.</span><span class="code-variable">x</span>
+                <span class="code-keyword">#</span><span class="code-variable">x</span><span
+                  class="code-operator">.</span><span class="code-variable">x</span>
               </div>
               <div class="code-line">
                 <span class="code-comment">// Church numeral for 2</span>
               </div>
               <div class="code-line">
-                <span class="code-keyword">#</span><span class="code-variable">f</span><span class="code-operator">.</span><span class="code-keyword">#</span><span class="code-variable">x</span><span class="code-operator">.</span><span class="code-variable">f</span> <span class="code-variable">f</span> <span class="code-variable">x</span>
+                <span class="code-keyword">#</span><span class="code-variable">f</span><span
+                  class="code-operator">.</span><span class="code-keyword">#</span><span
+                  class="code-variable">x</span><span class="code-operator">.</span><span class="code-variable">f</span>
+                <span class="code-variable">f</span> <span class="code-variable">x</span>
               </div>
             </div>
           </div>
@@ -79,12 +84,14 @@ import { RouterLink } from 'vue-router'
           <div class="feature-card">
             <div class="feature-icon">🧮</div>
             <h3>Mathematical Foundation</h3>
-            <p>Built on impure lambda calculus, providing a solid mathematical foundation for functional programming concepts.</p>
+            <p>Built on impure lambda calculus, providing a solid mathematical foundation for functional programming
+              concepts.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">🎯</div>
             <h3>Educational Focus</h3>
-            <p>Perfect for learning and understanding lambda calculus, variable binding, and function application principles.</p>
+            <p>Perfect for learning and understanding lambda calculus, variable binding, and function application
+              principles.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">⚡</div>
@@ -154,12 +161,15 @@ import { RouterLink } from 'vue-router'
     transform: translateY(100vh) rotate(0deg);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     transform: translateY(-100px) rotate(360deg);
     opacity: 0;
@@ -533,20 +543,20 @@ import { RouterLink } from 'vue-router'
     gap: 2rem;
     text-align: center;
   }
-  
+
   .logo-text {
     font-size: 2.5rem;
     justify-content: center;
   }
-  
+
   .hero-subtitle {
     font-size: 2rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .hero-actions {
     justify-content: center;
   }
