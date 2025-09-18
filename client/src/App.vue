@@ -126,6 +126,7 @@ main {
 
 .nav-link:hover {
   color: #4f46e5;
+  background-color: rgba(79, 70, 229, 0.1);
 }
 
 .nav-link.router-link-active {
@@ -187,11 +188,14 @@ main {
   color: #9ca3af;
   text-decoration: none;
   margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .footer-link:hover {
-  color: white;
+  color: #4f46e5;
+  background-color: rgba(79, 70, 229, 0.1);
 }
 
 .footer-text {
