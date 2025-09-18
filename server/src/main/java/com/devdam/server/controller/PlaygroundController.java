@@ -50,6 +50,8 @@ public class PlaygroundController {
                     log.warn("AI returned empty explanation, using fallback");
                     explanation = generateFallbackExplanation(sanitizedCode, executionResult);
                 }
+
+                log.info("AI explanation: {}", explanation);
             } catch (Exception e) {
                 log.warn("AI explanation failed, using fallback: {}", e.getMessage());
                 explanation = generateFallbackExplanation(sanitizedCode, executionResult);
