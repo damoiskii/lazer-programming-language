@@ -31,8 +31,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['vue', 'vue-router'],
-          unhead: ['@unhead/vue']
+          vendor: ['vue', 'vue-router']
         }
       }
     },
@@ -42,14 +41,8 @@ export default defineConfig({
     cssCodeSplit: true,
     // Generate clean file names
     assetsDir: 'assets',
-    // Enable compression-friendly builds
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    }
+    // Use esbuild for minification (faster and more reliable)
+    minify: 'esbuild'
   },
   // SEO-friendly configuration
   base: '/',
