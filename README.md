@@ -1,4 +1,4 @@
-# LazerEdit - Impure Lambda Calculus Programming Language
+# Lazer - Impure Lambda Calculus Programming Language
 
 A modern web application for learning and experimenting with impure lambda calculus expressions, featuring an interactive playground with AI-powered explanations.
 
