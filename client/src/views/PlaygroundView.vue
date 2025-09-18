@@ -180,6 +180,45 @@ const formatSteps = (stepsText) => {
     
     return formatted
 }
+
+// Format explanation to preserve proper spacing and line breaks
+const formatExplanation = (explanationText) => {
+    if (!explanationText) return ''
+    
+    let formatted = explanationText
+    
+    // Escape HTML characters first to prevent XSS
+    formatted = formatted
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+    
+    // Convert line breaks to HTML breaks
+    formatted = formatted.replace(/\n/g, '<br>')
+    
+    // Add some spacing around numbered lists
+    formatted = formatted.replace(/(\d+\.\s)/g, '<br>$1')
+    
+    // Add spacing around bullet points if present
+    formatted = formatted.replace(/(-\s)/g, '<br>&nbsp;&nbsp;$1')
+    
+    // Highlight lambda expressions in explanations
+    formatted = formatted.replace(
+        /(#[a-zA-Z]+\.[a-zA-Z#.\s()]+)/g,
+        '<code style="background-color: rgba(251, 191, 36, 0.1); padding: 2px 4px; border-radius: 3px; color: #fbbf24;">$1</code>'
+    )
+    
+    // Highlight quoted expressions
+    formatted = formatted.replace(
+        /`([^`]+)`/g,
+        '<code style="background-color: rgba(251, 191, 36, 0.1); padding: 2px 4px; border-radius: 3px; color: #fbbf24;">$1</code>'
+    )
+    
+    // Clean up any extra breaks at the beginning
+    formatted = formatted.replace(/^(<br>)+/, '')
+    
+    return formatted
+}
 </script>
 
 <template>
@@ -252,7 +291,7 @@ const formatSteps = (stepsText) => {
                     <div v-if="explanation && !error" class="explanation-display">
                         <h4>🤖 AI Explanation</h4>
                         <div class="explanation-content">
-                            <p>{{ explanation }}</p>
+                            <div v-html="formatExplanation(explanation)"></div>
                         </div>
                     </div>
 
