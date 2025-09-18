@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
+import com.devdam.server.config.properties.ClientProperties;
 import com.devdam.server.config.properties.NovitaProperties;
 
 import jakarta.annotation.PostConstruct;
@@ -18,10 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
-@EnableConfigurationProperties(NovitaProperties.class)
+@EnableConfigurationProperties({NovitaProperties.class, ClientProperties.class})
 @RequiredArgsConstructor
 public class AppConfig {
     private final NovitaProperties novitaProperties;
+    private final ClientProperties clientProperties;
     private final ResourceLoader resourceLoader;
 
     @Getter
@@ -41,6 +43,10 @@ public class AppConfig {
 
     public int getNovitaMaxTokens() {
         return novitaProperties.getMaxTokens();
+    }
+
+    public String getClientUrl() {
+        return clientProperties.getUrl();
     }
 
     @PostConstruct

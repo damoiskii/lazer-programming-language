@@ -14,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/playground")
-@CrossOrigin(origins = "http://localhost:3000") // Allow requests from Vue dev server
 @Slf4j
 public class PlaygroundController {
     private final EngineServiceImpl engineService;

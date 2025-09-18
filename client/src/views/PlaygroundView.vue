@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, computed, nextTick } from 'vue'
+import { apiConfig } from '@/config/api.js'
 
 const code = ref('#x.x')
 const result = ref('')
@@ -109,7 +110,7 @@ const executeCode = async () => {
     explanation.value = ''
 
     try {
-        const response = await fetch('http://localhost:8080/api/playground/execute', {
+        const response = await fetch(apiConfig.endpoints.playground.execute, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
