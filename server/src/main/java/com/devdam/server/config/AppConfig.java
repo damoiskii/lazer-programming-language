@@ -48,18 +48,30 @@ public class AppConfig {
         try {
             loadAIAssistantChatbotGuardRailContextSystemPrompt();
         } catch (Exception e) {
-            log.error("Error loading AI Assistant Chatbot configuration", e);
+            log.error("Error loading AI Assistant Chatbot configuration: {}", e.getMessage());
+            // Don't throw the exception to prevent application startup failure
+            guardRailContext = "Default safeguard context - configuration load failed";
         }
     }
 
     private void loadAIAssistantChatbotGuardRailContextSystemPrompt() {
-        Resource resource = resourceLoader.getResource("classpath:ai-contexts/safeguard.md");
-
-        try (InputStream inputStream = resource.getInputStream()) {
-            guardRailContext = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        try {
+            Resource resource = resourceLoader.getResource("classpath:static/ai-contexts/safeguard.md");
+            
+            if (!resource.exists()) {
+                log.warn("Safeguard file not found at classpath:static/ai-contexts/safeguard.md");
+                guardRailContext = "Default safeguard context - file not found";
+                return;
+            }
+            
+            try (InputStream inputStream = resource.getInputStream()) {
+                guardRailContext = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+                log.info("Successfully loaded safeguard context from safeguard.md");
+            }
         }
         catch (IOException e) {
-            throw new RuntimeException("Failed to load guardrail context", e);
+            log.error("Failed to load guardrail context from safeguard.md: {}", e.getMessage());
+            guardRailContext = "Default safeguard context - failed to load file";
         }
     }
 }

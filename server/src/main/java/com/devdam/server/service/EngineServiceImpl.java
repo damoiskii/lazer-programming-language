@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.z_antlr.generated.LazerLexer;
 import com.z_antlr.generated.LazerParser;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CodePointCharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -25,6 +26,7 @@ import java.net.http.HttpResponse;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EngineServiceImpl implements EngineService {
     private final NovitaProperties novitaProperties;
     private StringBuilder stepsToNF;
@@ -99,6 +101,8 @@ public class EngineServiceImpl implements EngineService {
 
     @Override
     public String promptAI(String code, String executionResults) throws IOException, InterruptedException {
+        log.info("Calling AI service for code: {} with results: {}", code, executionResults);
+        
         HttpClient client = HttpClient.newHttpClient();
 
         String systemContent = "You are an assistant for my application LazerEdit for my programming " +
@@ -109,6 +113,10 @@ public class EngineServiceImpl implements EngineService {
         String prompt = "Work out (evaluate/reduce) this impure lambda calculus expression and show step by step working out with explanation: " + code +
                 ". Keep in mind that the result I got for this is: " + executionResults + ". Also, use new line characters when doing the step by step working out.";
 
+        // log.info("AI request - URL: {}, Model: {}, Max tokens: {}", 
+        //          novitaProperties.getUrl(), 
+        //          novitaProperties.getModel(), 
+        //          novitaProperties.getMaxTokens());
 
         String json = String.format("{"
                 + "\"model\": \"%s\","
@@ -127,6 +135,14 @@ public class EngineServiceImpl implements EngineService {
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        
+        // log.info("AI response status: {}", response.statusCode());
+        // log.info("AI response body: {}", response.body());
+
+        if (response.statusCode() != 200) {
+            log.error("AI API request failed with status: {}, body: {}", response.statusCode(), response.body());
+            return null;
+        }
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(response.body());
@@ -134,9 +150,12 @@ public class EngineServiceImpl implements EngineService {
 
         if (choicesNode.isArray() && !choicesNode.isEmpty()) {
             JsonNode firstChoice = choicesNode.get(0);
-            return firstChoice.path("message").path("content").asText();
+            String content = firstChoice.path("message").path("content").asText();
+            // log.info("AI returned content: {}", content);
+            return content;
         }
 
+        log.warn("AI response did not contain expected choices array or was empty");
         return null;
     }
 
